@@ -29,10 +29,3 @@ IMPORTANT ON A SHARED PC:
  * Where a step says "browser" it works on any PC with internet.
 
 
-fakihaariz05@gmail.com 
-Aariz@2005
-
-
-jenkins
-Aariz_faki
-Aariz@2005
