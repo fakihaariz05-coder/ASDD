@@ -1,0 +1,34 @@
+PRACTICAL 8 - SERVERLESS FUNCTION USING AWS LAMBDA  (everything in the browser)
+================================================================================
+AIM: To create and test a serverless function using AWS Lambda.
+NEEDS: AWS account (free tier or AWS Academy Learner Lab from college).
+
+STEPS
+1.  Browser: https://console.aws.amazon.com -> Sign in.
+    (AWS Academy: Canvas -> Learner Lab -> Start Lab -> click "AWS" when dot is green.)
+2.  Top search bar: type "Lambda" -> open it.
+3.  Click "Create function".
+4.  Select "Author from scratch".
+       Function name : HelloLambda
+       Runtime       : Python 3.12 (any Python 3.x)
+       Permissions   : leave default (Learner Lab: "Use an existing role" -> LabRole)
+5.  Click "Create function".
+6.  In the "Code" tab, delete the sample code and paste:
+
+def lambda_handler(event, context):
+    return {
+        "statusCode": 200,
+        "body": "Hello from Lambda!"
+    }
+
+7.  Click "Deploy" (wait for the green message).
+8.  Click "Test" -> "Create new event" -> Event name: test1 -> Save.
+9.  Click "Test" again.
+10. Green box "Execution result: succeeded" shows:
+       "statusCode": 200, "body": "Hello from Lambda!"      Screenshot.
+11. Tab "Monitor" -> "View CloudWatch logs" (optional screenshot).
+12. Optional URL: tab "Configuration" -> "Function URL" -> "Create function URL" ->
+    Auth type NONE -> Save -> open the URL in the browser.
+13. Clean up: top right "Actions" -> "Delete function" (avoids any charges).
+
+RESULT: A serverless function was created, deployed and tested using AWS Lambda.

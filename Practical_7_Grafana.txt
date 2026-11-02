@@ -1,0 +1,42 @@
+PRACTICAL 7 - MONITORING USING GRAFANA
+=======================================
+AIM: To create a monitoring dashboard using Grafana.
+
+CHOOSE ONE OPTION
+-----------------
+OPTION A - NO INSTALLATION (browser only)  <- easiest if PC is locked down
+   Browser: https://play.grafana.org  -> open any dashboard, then
+   "Dashboards" -> "New" -> "New dashboard" -> "Add visualization" to build your own.
+   (Read-only demo; use for screenshots if installing is not allowed.)
+
+OPTION B - RUN GRAFANA FROM A ZIP (no admin rights)
+   1. Browser: https://grafana.com/grafana/download?platform=windows
+      -> choose "Standalone Windows Binaries (.zip)" -> download -> Extract
+      to D:\grafana
+   2. Command Prompt:
+         cd /d D:\grafana\bin
+         grafana-server.exe
+      Keep the window open.
+   3. Browser: http://localhost:3000   login: admin / admin  (Skip password change)
+
+OPTION C - Docker:   docker run -d -p 3000:3000 grafana/grafana
+
+STEPS (Option B or C) - dashboard with built-in test data
+1.  Left menu: Connections -> Data sources -> "Add data source".
+2.  Search "TestData" -> select it -> "Save & test"  (green tick).
+3.  Left menu: Dashboards -> New -> "New dashboard" -> "Add visualization".
+4.  Choose data source "TestData". Scenario: "Random Walk".
+5.  Right side: Visualization = "Time series"; Title = "CPU Usage (demo)".
+6.  Click "Apply" (top right).
+7.  Add a second panel: "Add" -> "Visualization" -> Visualization = "Gauge" -> Apply.
+8.  Click the Save icon -> Title "Monitoring Dashboard" -> Save.
+9.  Top right: set refresh to 5s. Watch the graph move. Screenshot.
+
+OPTIONAL - REAL METRICS WITH PROMETHEUS
+10. Download Prometheus Windows zip from https://prometheus.io/download -> extract.
+    Run prometheus.exe  (open http://localhost:9090).
+11. Grafana: Data sources -> Add -> Prometheus -> URL http://localhost:9090 ->
+    Save & test.
+12. New panel -> query:   up    or    prometheus_http_requests_total   -> Apply.
+
+RESULT: A Grafana dashboard with live-updating panels was created to monitor metrics.

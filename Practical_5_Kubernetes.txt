@@ -1,0 +1,34 @@
+PRACTICAL 5 - KUBERNETES
+=========================
+AIM: To deploy, expose and scale an application on a Kubernetes cluster.
+
+CHOOSE ONE OPTION
+-----------------
+OPTION A - Minikube already installed on the PC (needs Docker running)
+   Open PowerShell and run the commands in "COMMANDS" below, starting with:
+       minikube start --driver=docker
+
+OPTION B - NO INSTALLATION NEEDED (works on any PC, in browser)  <- easiest
+   1. Browser: https://killercoda.com -> Login (use GitHub login).
+   2. Click "Playgrounds" -> "Kubernetes" (the 1-node one) -> Start.
+   3. A Linux terminal opens in the browser. Skip "minikube start"; the cluster
+      is already running. Run the commands below.
+
+COMMANDS
+1.  kubectl get nodes                       (node should be Ready)
+2.  kubectl create deployment nginx --image=nginx
+3.  kubectl get deployments
+4.  kubectl get pods                         (wait until STATUS = Running)
+5.  kubectl expose deployment nginx --type=NodePort --port=80
+6.  kubectl get svc                          (note the port like 80:31234)
+7.  Test:
+      Option A:  minikube service nginx      (browser opens nginx page)
+      Option B:  curl localhost:<NodePort>   (prints "Welcome to nginx!")
+8.  kubectl scale deployment nginx --replicas=3
+9.  kubectl get pods                         (now 3 pods)  Screenshot.
+10. kubectl describe deployment nginx
+11. Clean up:
+      kubectl delete service nginx
+      kubectl delete deployment nginx
+
+RESULT: nginx was deployed, exposed, scaled to 3 replicas and deleted on Kubernetes.

@@ -1,0 +1,47 @@
+PRACTICAL 2 - VERSION CONTROL USING GIT  (Git Bash + browser)
+==============================================================
+AIM: To perform version control operations using Git and apply collaboration workflows.
+NEEDS: Git Bash, GitHub account.
+
+STEPS (type each line in Git Bash; do NOT type the < > brackets)
+1.  Browser: github.com -> New repository -> name: GitProject ->
+    leave README UNTICKED -> Create. Copy the URL (https://github.com/YOURNAME/GitProject.git).
+2.  Open Git Bash:
+       git --version
+       git config --global user.name "Your Name"
+       git config --global user.email "your@email.com"
+       git config --list
+3.  Create the project:
+       mkdir GitProject
+       cd GitProject
+       git init
+       git status
+4.  Create a file and commit:
+       echo "# GitProject" > README.md
+       git add README.md
+       git commit -m "Initial commit"
+5.  Connect to GitHub and push (paste YOUR real URL):
+       git branch -M main
+       git remote add origin https://github.com/YOURNAME/GitProject.git
+       git push -u origin main
+    (A browser window may ask you to sign in -> sign in -> Authorize.)
+    Refresh GitHub: README.md is there. Screenshot.
+
+COLLABORATION WORKFLOW (branch + pull request)
+6.  git checkout -b feature1
+    echo "New feature" >> README.md
+    git add .
+    git commit -m "Added feature1"
+    git push origin feature1
+7.  Browser: GitHub repo -> "Compare & pull request" -> "Create pull request"
+    -> "Merge pull request" -> "Confirm merge". Screenshot.
+8.  Back in Git Bash:
+       git checkout main
+       git pull origin main
+       git log --oneline
+    Screenshot of the log.
+
+TROUBLE:  "nothing to commit" = you forgot git add.
+          "remote origin already exists" = git remote remove origin, then add again.
+
+RESULT: Repository created, committed, pushed, branched and merged through a pull request.

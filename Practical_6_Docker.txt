@@ -1,0 +1,48 @@
+PRACTICAL 6 - DOCKER
+=====================
+AIM: To build a Docker image from a Dockerfile and run it as a container.
+
+CHOOSE ONE OPTION
+-----------------
+OPTION A - Docker installed on the PC: open PowerShell / Git Bash, run commands below.
+           (Docker Desktop must be running: check "docker --version" and "docker ps".)
+
+OPTION B - NO INSTALLATION NEEDED (browser)  <- easiest
+   1. Browser: https://labs.play-with-docker.com -> Login (Docker Hub account) -> Start.
+   2. Click "+ ADD NEW INSTANCE". A terminal opens. Run the commands below.
+      (Session lasts 4 hours.)
+
+COMMANDS
+1.  docker --version
+2.  docker run hello-world                  (prints "Hello from Docker!")
+3.  mkdir DockerProject
+    cd DockerProject
+4.  Create app.py (copy all lines together):
+cat > app.py << 'EOT'
+print("Hello Docker")
+EOT
+5.  Create Dockerfile (copy all lines together):
+cat > Dockerfile << 'EOT'
+FROM python:3.11-slim
+WORKDIR /app
+COPY app.py .
+CMD ["python", "app.py"]
+EOT
+6.  docker build -t myapp .
+7.  docker images                            (myapp is listed)
+8.  docker run myapp                         (prints "Hello Docker")   Screenshot.
+9.  docker ps -a
+10. Web server demo:
+       docker run -d -p 8080:80 --name web nginx
+       docker ps
+    Option A: open http://localhost:8080
+    Option B: click the "8080" badge shown on top of the Play With Docker page.
+11. Clean up:
+       docker stop web
+       docker rm web
+       docker rmi myapp
+
+Note: On Windows PowerShell, instead of the "cat > ... << EOT" lines create the
+files with Notepad (save as app.py and Dockerfile - no .txt!) or use Git Bash.
+
+RESULT: A Docker image was built from a Dockerfile and run as a container.

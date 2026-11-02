@@ -1,0 +1,60 @@
+PRACTICAL 4 - JENKINS + GITHUB CI/CD PIPELINE
+==============================================
+AIM: To integrate Jenkins with GitHub and simulate a CI/CD pipeline for automated building and testing.
+NEEDS: Practical 3 done (Jenkins running), GitHub login, JDK (javac).
+
+PART A - CODE ON GITHUB (Git Bash)
+1.  Browser: GitHub -> New repository -> name jenkins-demo -> PUBLIC ->
+    README unticked -> Create.
+2.  Git Bash:
+       mkdir jenkins-demo
+       cd jenkins-demo
+3.  Create the Java file (copy ALL lines below together, paste once):
+cat > Hello.java << 'EOT'
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello from Jenkins CI/CD");
+    }
+}
+EOT
+4.  Test it:
+       javac Hello.java
+       java Hello
+5.  Push:
+       echo "*.class" > .gitignore
+       git init
+       git add .
+       git commit -m "Add Hello.java"
+       git branch -M main
+       git remote add origin https://github.com/YOURNAME/jenkins-demo.git
+       git push -u origin main
+
+PART B - JENKINS JOB (browser, http://localhost:8081)
+6.  New Item -> name CI-CD-Pipeline -> Freestyle project -> OK.
+7.  Source Code Management -> Git ->
+       Repository URL: https://github.com/YOURNAME/jenkins-demo.git
+       Branch Specifier: */main      (NOT */master)
+8.  Triggers -> tick "Poll SCM" -> Schedule:  * * * * *
+    (orange warning about "every minute" is OK).
+9.  Build Steps -> Add build step -> "Execute Windows batch command":
+       javac Hello.java
+       java Hello
+10. Save -> Build Now -> build #1 -> Console Output.
+    Shows "Hello from Jenkins CI/CD" and "Finished: SUCCESS". Screenshot.
+
+PART C - PROVE THE AUTOMATION (Git Bash in jenkins-demo)
+11. sed -i 's/Jenkins CI\/CD/Jenkins CI\/CD - updated/' Hello.java
+    git add .
+    git commit -m "Updated message"
+    git push
+12. Wait 1 minute. Build #2 starts BY ITSELF ("Started by an SCM change").
+    Open #2 -> Console Output -> shows "- updated" and SUCCESS. Screenshot.
+    Open #2 -> Changes -> shows commit "Updated message". Screenshot.
+
+TROUBLE:  'javac' not recognized -> Jenkins needs a JDK. Close Jenkins window,
+          then in Command Prompt:
+             set PATH=C:\Program Files\Java\jdk-17\bin;%PATH%
+          and start Jenkins again (java -jar jenkins.war --httpPort=8081).
+          "couldn't find any revision" -> branch must be */main.
+
+RESULT: Jenkins was integrated with GitHub; every push automatically built and tested the code (CI/CD simulated).

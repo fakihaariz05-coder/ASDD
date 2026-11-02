@@ -1,0 +1,38 @@
+BEFORE YOU GO TO THE COLLEGE LAB  (5-minute checklist)
+=======================================================
+CREATE THESE ACCOUNTS AT HOME (free):
+ [ ] Atlassian / Jira      https://www.atlassian.com
+ [ ] GitHub                https://github.com
+ [ ] Docker Hub            https://hub.docker.com   (only for Play With Docker)
+ [ ] AWS account           https://aws.amazon.com/free  (needs a card; ask your
+                           college if they give AWS Academy / Learner Lab instead)
+
+KEEP READY (note on phone / paper):
+ [ ] GitHub username + password
+ [ ] A GitHub Personal Access Token (GitHub > Settings > Developer settings >
+     Personal access tokens > Tokens (classic) > Generate, tick "repo")
+     Use it as the password if Git asks for one.
+
+CHECK ON THE COLLEGE PC (open Command Prompt / Git Bash):
+ git --version        -> if missing, ask lab staff to install Git for Windows
+ java -version        -> need Java 17 or 21 (JDK)
+ javac -version       -> must work (JDK, not only JRE)
+ docker --version     -> if missing, use Play With Docker (Practical 6)
+ minikube version     -> if missing, use Killercoda (Practical 5)
+
+IMPORTANT ON A SHARED PC:
+ * You may not have admin rights, so the files below avoid installing anything.
+ * Work inside a folder you can write to, e.g. D:\devops or C:\Users\<you>\devops
+ * AT THE END: log out of GitHub / Jira / AWS in the browser and delete saved
+   Git logins (Windows search "Credential Manager" > Windows Credentials >
+   remove github.com).
+ * Where a step says "browser" it works on any PC with internet.
+
+
+fakihaariz05@gmail.com 
+Aariz@2005
+
+
+jenkins
+Aariz_faki
+Aariz@2005

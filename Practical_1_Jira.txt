@@ -1,0 +1,42 @@
+PRACTICAL 1 - AGILE PROJECT LIFECYCLE USING JIRA  (everything in the browser)
+==============================================================================
+AIM: To study and implement the Agile software project lifecycle using Jira with DevOps pipeline integration.
+NEEDS: Browser + Atlassian login.
+
+STEPS
+1.  Open https://www.atlassian.com -> Log in.
+2.  Click "Create project" -> choose "Scrum" -> "Use template" ->
+    "Team-managed" -> Name: DevOpsLab, Key: DOL -> Create.
+
+SUMMARY
+3.  Click "Summary" in the left menu. Take a screenshot (shows project overview).
+
+BOARD
+4.  Click "Backlog" -> "Create issue" -> create 3 issues:
+       DOL-1 Login page
+       DOL-2 Database design
+       DOL-3 Testing
+5.  Click "Create sprint" -> drag the 3 issues into it -> "Start sprint" -> Start.
+6.  Click "Board". Drag cards: TO DO -> IN PROGRESS -> DONE. Screenshot.
+
+LIST
+7.  Click "List". All issues show in a table. Screenshot.
+
+TIMELINE
+8.  Click "Timeline" -> "Create epic" (name: Release 1).
+9.  Drag the bar to set start and end dates. Screenshot.
+
+ADDING COLLABORATORS
+10. Left menu bottom: "Project settings" -> "Access" (or "People") ->
+    "Add people" -> type friend's email -> role Member -> Add.
+11. Open DOL-1 -> set "Assignee" to that person. Screenshot.
+
+DEVOPS PIPELINE INTEGRATION (GitHub)
+12. Top menu "Apps" -> "Explore more apps" -> search "GitHub for Jira" ->
+    "Get app" -> follow "Connect GitHub" -> choose your repo (e.g. jenkins-demo).
+13. In Git Bash inside any repo, make a commit with the issue key:
+       git commit -m "DOL-1 added login page"
+       git push
+14. Open DOL-1 in Jira -> "Development" section shows the commit. Screenshot.
+
+RESULT: Agile lifecycle (Summary, Board, List, Timeline, Collaborators) was implemented in Jira and integrated with GitHub.

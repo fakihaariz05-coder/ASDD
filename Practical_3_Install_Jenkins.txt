@@ -1,0 +1,41 @@
+PRACTICAL 3 - INSTALL JENKINS  (no admin rights needed - runs from one file)
+=============================================================================
+AIM: To install Jenkins, run it on an available port and trigger a Hello World build.
+NEEDS: Java 17 or 21 (JDK). Internet.
+
+STEPS
+1.  Check Java in Command Prompt:
+       java -version
+2.  Browser: https://www.jenkins.io/download -> under "Long-term Support (LTS)"
+    choose the "Generic Java package (.war)". Save jenkins.war into D:\jenkins
+    (or any folder you can write to).
+3.  Open Command Prompt:
+       cd /d D:\jenkins
+       set JENKINS_HOME=D:\jenkins\data
+       java -jar jenkins.war --httpPort=8081
+    - If 8081 is busy, use 8082, 9090 etc. (this is "connect to any available port").
+    - Keep this window OPEN while using Jenkins.
+4.  Wait until you see in the window:
+       "Jenkins is fully up and running"
+    and a long password printed between lines of *****.  COPY IT.
+5.  Browser: http://localhost:8081
+6.  Paste the password -> Continue -> "Install suggested plugins" -> wait.
+7.  Create the admin user (any name/password) -> Save -> "Start using Jenkins".
+    Screenshot of the Jenkins dashboard.
+
+HELLO WORLD BUILD
+8.  "New Item" -> name HelloWorld -> "Freestyle project" -> OK.
+9.  Scroll to "Build Steps" -> "Add build step" -> "Execute Windows batch command".
+10. Type:
+       echo Hello World
+11. Save -> "Build Now".
+12. Click build #1 -> "Console Output". It shows:
+       Hello World
+       Finished: SUCCESS
+    Screenshot.
+
+TROUBLE:  "Address already in use" -> change --httpPort to another number.
+          Java not found -> ask lab staff for JDK, or use the JDK folder:
+             "C:\Program Files\Java\jdk-17\bin\java" -jar jenkins.war --httpPort=8081
+
+RESULT: Jenkins was installed, launched on an available port, and a Hello World build ran successfully.
